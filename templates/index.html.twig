@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Stromboli Pizza</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+	<div data-role="header">
+		<h1>Stromboli Pizza</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Welcome to Stromboli Pizza</h2>
+
+		<br>
+        <h3>Login to order or Register to create an account.</h3>
+
+		<p><a href="#register" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
+		<p><a href="#login" class="ui-btn ui-shadow ui-corner-all">Login</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-------------------- DRIVER DASHBOARD ----------------------->
+
+<div data-role="page" id="driver" data-theme="a">
+
+<div data-role="header">
+		<h1>Driver</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+		<h2>Driver</h2>
+        
+      
+		
+
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div>
+
+
+<!---------- CUSTOMER DASHBOARD ------------------------->
+ 
+<div data-role="page" id="customer" data-theme="a">
+<script>
+
+// template for a product
+class product {
+  constructor(name, price, qty) {
+    this.name = name
+    this.price = price;
+    this.qty = qty;
+  }
+}
+
+
+
+// define our products
+cookies = new product("cookies", 3.50, 0);
+
+cola = new product("regular cola", 1.50, 0);
+
+</script>
+<div data-role="header">
+		<h1>Customer</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+		<h2>Customer</h2>
+<label>
+        <input type="radio" name="pizza" value ="BBQ" id="radio-choice-0a">BBQ Pizza
+    </label>
+    <label for="radio-choice-0b">Sausage Pizza</label>
+    <input type="radio" name="pizza" value = "Sausage" id="radio-choice-0b" class="custom">
+	<label for="radio-choice-0c">Vegetarian Pizza</label>
+    <input type="radio" name="pizza" value =" Vegetarian" id="radio-choice-0c" class="custom">
+	
+
+    <label for="textarea-1">Special Requirements:</label>
+    <textarea name="requirements" id="requirements"></textarea>
+
+
+                    
+<button id="placeOrder"> Place Order</button>
+
+
+<h2>Your Order Details</h2><br>
+<div id="orderDetails">
+
+
+</div>                 
+<script>
+$( "#placeOrder" ).click(function() {
+  var content = "";
+  
+  content = content + "Pizza Type: ";
+  
+  var pizza = $("input[name=pizza]").each(function(){
+		if (this.checked == true){
+		content = content + this.value + ":" + this.checked + '<br>';
+		}
+  });
+    
+  var requirements = $("#requirements").val();
+  
+  content = content +'<br>Additional Order Requirements:</br>';  
+  content = content + requirements + '<br>';
+  
+  $("#orderDetails").html(content);
+  
+});
+
+</script>
+		
+      
+		
+
+	</div><!-- /content -->
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div>
+
+
+<!-------------------------	LOGIN PAGE ------------------------------------>
+
+<div data-role="page" id="login" data-theme="a">
+<div data-role="header">
+		<h1>Login page</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+		<h2>Login</h2>
+		
+		Username <input type="text" name="login_username" id="login_username" value="">
+		Password <input type="password" name="login_password" id="login_password" value="">
+		<button class="ui-btn" id="loginButton">Submit</button>
+		
+	</div><!-- /content -->
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div>
+
+<!-------------------------- REGISTER PAGE ----------------------------------->
+
+<div data-role="page" id="register" data-theme="a">
+
+<div data-role="header">
+		<h1>Register</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+		<h2>Two</h2>
+        
+       Username <input type="text" name="username" id="username" value="">
+       Password <input type="text" name="password" id="password" value="">
+	   Account Type <input type="text" name="acctype" id="acctype" value="">
+<button class="ui-btn" id="registerButton">Submit</button>
+		
+
+	</div><!-- /content -->
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div>
+</body>
+<script>
+
+$( "#loginButton" ).click(function() {
+  var un = $( "#login_username" ).val();
+  console.log(un);
+  
+  var pw = $( "#login_password" ).val();
+  console.log(pw);
+  
+  $.post( "/backEnd", { type: "login", username:un, password:pw})
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+   
+  if(data == 'customer'){
+		window.location = "/index#customer";
+		}
+	else if (data == 'driver'){
+		window.location = "/index#driver";
+		}
+	
+	});
+
+});
+	
+$( "#registerButton" ).click(function() {
+  var un = $( "#username" ).val();
+  console.log(un);
+  
+  var pw = $( "#password" ).val();
+  console.log(pw);
+  
+  var at = $( "#acctype" ).val();
+  console.log(acctype);
+
+  $.post( "/backEnd", { type: "register", username:un, password:pw, acctype:at})
+  .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+  //alert( "Register button pressed" );
+  
+});
+
+</script>
+</html>
