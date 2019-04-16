@@ -76,9 +76,15 @@ class product {
 
 // define our products
 //pizza = new product("...") or a separate variable for each project
-cookies = new product("cookies", 3.50, 0);
-
-cola = new product("regular cola", 1.50, 0);
+hawaiian = new product("hawaiian", 3.50, 0);
+ny = new product("ny", 1.50, 0);
+house = new product("house",);
+custom = new product("custom");
+wedges = new product("wedges");
+bread = new product ("bread");
+coke = new product ("coke");
+fanta = new product ("fanta");
+sprite = new product ("sprite);
 
 </script>
 <div data-role="header">
@@ -100,43 +106,77 @@ cola = new product("regular cola", 1.50, 0);
 	<label>
 	<input type="checkbox" name="pizza" value ="Hawaiian" id="check-option-0a">Hawaiian Pizza
 	</label>
-	<label for="check-option-0b">New Yorker Pizza</label>
-    <input type="checkbox" name="pizza" value = "NY" id="check-option-0b" class="custom">
-	<label for="check-option-0c">House Special Pizza</label>
-    <input type="checkbox" name="pizza" value =" House" id="check-option-0c" class="custom">
 	</td>
-	
 	<td>
-	<div data-role="pizza-size">
+	<div class="pizza-size">
     <label for="pizza-size-hw"></label>
     <select class="size" id="pizza-size-hw">
         <option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
     </select>
-
+	</div>
+	</td>
+	
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct1">-</button>
+	<input type="text" id="hawaiianQty"/>
+	<button id="addProduct1" productname="hawaiian">+</button>
+    </div>
+	</td>
+	
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td><label for="check-option-0b">New Yorker Pizza</label>
+    <input type="checkbox" name="pizza" value = "NY" id="check-option-0b" class="custom">
+	</td>
+	<td>
+	<div class="pizza-size">
 	<label for="pizza-size-ny"></label>
     <select class="size" id="pizza-size-ny">
         <option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
+	</div>
     </select>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct2">-</button>
+	<input type="text" id="nyQty"/>
+	<button id="addProduct2" productname="ny">+</button> 
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+		
+	<tr><td>
+	<label for="check-option-0c">House Special Pizza</label>
+    <input type="checkbox" name="pizza" value =" House" id="check-option-0c" class="custom">
+	</td>
+	<td>
+	<div class="pizza-size">
 	<label for="pizza-size-hs"></label>
     <select class="size" id="pizza-size-hs">
         <option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
-    </select>
 	</div>
-	
+    </select>
 	</td>
-	
 	<td>
-	
+	<div class = "quantity">
+	<button id="removeProduct3">-</button>
+	<input type="text" id="houseQty"/>
+	<button id="addProduct3" productname="house">+</button>
+	</div>
 	</td>
-	
 	<td>
-	</td>
+	</td>	
 	</tr>
 </table>
 	
@@ -153,12 +193,24 @@ cola = new product("regular cola", 1.50, 0);
 	<input type="checkbox" name="pizza" value ="Custom" id="check-option-cs">Custom Pizza
 	</label></td>
 	<td>
+	<div class="pizza-size">
 	<label for="pizza-size-cs"></label>
     <select class="size" id="pizza-size-cs">
         <option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
+	</div>
 	</select>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct4">-</button>
+	<input type="text" id="customQty"/>
+	<button id="addProduct4" productname="custom">+</button>
+	</div>
+	</td>
+	<td>
+	
 	</td>
 	</table>
 	<h2>Sides</h2>
@@ -172,10 +224,28 @@ cola = new product("regular cola", 1.50, 0);
 	<label>
 	<input type="checkbox" name="sides" value ="Wedges" id="check-option-1a">Potato Wedges - &euro;5
 	</label>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct5">-</button>
+	<input type="text" id="wedgesQty"/>
+	<button id="addProduct5" productname="wedges">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td>
 	<label for="check-option-1b">Garlic Bread - &euro;5</label>
     <input type="checkbox" name="sides" value = "GBread" id="check-option-1b" class="custom">
 	</td>
 	<td>
+	<div class = "quantity">
+	<button id="removeProduct6">-</button>
+	<input type="text" id="breadQty"/>
+	<button id="addProduct6" productname="bread">+</button>
+	</div>
 	</td>
 	<td>
 	</td>
@@ -192,17 +262,42 @@ cola = new product("regular cola", 1.50, 0);
 	<label>
 	<input type="checkbox" name="drink" value ="Coke" id="check-option-2a">Coca-Cola - &euro;1
 	</label>
-	<label for="check-option-2b">Fanta - &euro;1</label>
-    <input type="checkbox" name="drink" value = "Fanta" id="check-option-2b" class="custom">
-	<label for="check-option-2c">Sprite - &euro;1</label>
-    <input type="checkbox" name="drink" value = "Sprite" id="check-option-2c" class="custom">
-	</td>
-	
 	<td>
+	<div class = "quantity">
+	<button id="removeProduct7">-</button>
+	<input type="text" id="cokeQty"/>
+	<button id="addProduct7" productname="coke">+</button>
+	</div>
 	</td>
 	<td>
 	</td>
 	</tr>
+	<tr>
+	<td>	
+	<label for="check-option-2b">Fanta - &euro;1</label>
+    <input type="checkbox" name="drink" value = "Fanta" id="check-option-2b" class="custom">
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct8">-</button>
+	<input type="text" id="fantaQty"/>
+	<button id="addProduct8" productname="fanta">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr><td>
+	<label for="check-option-2c">Sprite - &euro;1</label>
+    <input type="checkbox" name="drink" value = "Sprite" id="check-option-2c" class="custom">
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct9">-</button>
+	<input type="text" id="spriteQty"/>
+	<button id="addProduct9" productname="sprite">+</button>
+	</div>
+	</td></tr>
 </table>	
 
     <label for="textarea-1">Special Requirements:</label>
@@ -235,6 +330,8 @@ $( "#placeOrder" ).click(function() {
   $("select.size").change(function(){
         var selectedSize = $(this).children("option:selected").val();
         alert("PizzaSize - " + selectedSize);
+		
+		content = content + " - " + selectedSize;
 		});
 	});
 	
