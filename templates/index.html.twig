@@ -120,9 +120,9 @@ sprite = new product ("sprite);
 	
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct1">-</button>
-	<input type="text" id="hawaiianQty"/>
-	<button id="addProduct1" productname="hawaiian">+</button>
+	<button id="removeProduct1" data-inline="true" data-mini="true">-</button>
+	<input type="text" data-inline="true" maxlength="3" size="3" id="hawaiianQty"/>
+	<button id="addProduct1" productname="hawaiian" data-inline="true" data-mini="true">+</button>
     </div>
 	</td>
 	
@@ -314,6 +314,14 @@ sprite = new product ("sprite);
 
 </div>                 
 <script>
+$(document).ready(function(){
+  $("select.size").change(function(){
+        var selectedSize = $(this).children("option:selected").val();
+        alert("PizzaSize - " + selectedSize);
+		
+		});
+	});
+
 $( "#placeOrder" ).click(function() {
   var content = "";
   
@@ -323,18 +331,10 @@ $( "#placeOrder" ).click(function() {
   var pizza = $("input[name=pizza]").each(function(){
 		if (this.checked == true){
 		content = content + this.value + ":" + '<br>';
+		content = content + " - " + selectedSize;
 		}
   });
   
-  $(document).ready(function(){
-  $("select.size").change(function(){
-        var selectedSize = $(this).children("option:selected").val();
-        alert("PizzaSize - " + selectedSize);
-		
-		content = content + " - " + selectedSize;
-		});
-	});
-	
   var requirements = $("#requirements").val();
   
   content = content +'<br>Additional Order Requirements:</br>';  

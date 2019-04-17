@@ -58,7 +58,7 @@ class BackEnd extends AbstractController
 				]);
 				
 				return new Response(
-				$person->getAcctype()
+				$person->getAcctype()//sends back account type
 				);
 			
 		}
