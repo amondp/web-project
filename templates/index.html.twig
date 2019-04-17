@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Stromboli Pizza</title>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
@@ -43,17 +41,16 @@
 
 <div data-role="page" id="driver" data-theme="a">
 
-<div data-role="header">
+	<div data-role="header">
 		<h1>Driver</h1>
 	</div><!-- /header -->
 
-<div role="main" class="ui-content">
+	<div role="main" class="ui-content">
 		<h2>Driver</h2>
-        
-      
-		
-
-	</div><!-- /content -->
+   
+    
+	</div>
+	<!-- /content -->
 	
 	<div data-role="footer" data-theme="a">
 		<h4>Stromboli Pizza &copy; 2019</h4><br>
@@ -69,19 +66,25 @@
 
 // template for a product
 class product {
-  constructor(name, price, qty) {
-    this.name = name
+  constructor(name, size, price, qty) {
+    this.name = name;
+	this.size = size;
     this.price = price;
     this.qty = qty;
   }
 }
 
-
-
 // define our products
-cookies = new product("cookies", 3.50, 0);
-
-cola = new product("regular cola", 1.50, 0);
+//pizza = new product("...") or a separate variable for each project
+hawaiian = new product("hawaiian", 3.50, 0);
+ny = new product("ny", 1.50, 0);
+house = new product("house",);
+custom = new product("custom");
+wedges = new product("wedges");
+bread = new product ("bread");
+coke = new product ("coke");
+fanta = new product ("fanta");
+sprite = new product ("sprite);
 
 </script>
 <div data-role="header">
@@ -89,22 +92,220 @@ cola = new product("regular cola", 1.50, 0);
 	</div><!-- /header -->
 
 <div role="main" class="ui-content">
-		<h2>Customer</h2>
-<label>
-        <input type="radio" name="pizza" value ="BBQ" id="radio-choice-0a">BBQ Pizza
-    </label>
-    <label for="radio-choice-0b">Sausage Pizza</label>
-    <input type="radio" name="pizza" value = "Sausage" id="radio-choice-0b" class="custom">
-	<label for="radio-choice-0c">Vegetarian Pizza</label>
-    <input type="radio" name="pizza" value =" Vegetarian" id="radio-choice-0c" class="custom">
+		<h2>Set Menu</h2>
+
+<table>
+	<tr>
+      <th>Select Pizza(s)</th>
+      <th>Select Size</th>
+      <th>Quantity</th>
+      <th>Add to Cart</th>
+    </tr>
 	
+	<tr><td>	
+	<label>
+	<input type="checkbox" name="pizza" value ="Hawaiian" id="check-option-0a">Hawaiian Pizza
+	</label>
+	</td>
+	<td>
+	<div class="pizza-size">
+    <label for="pizza-size-hw"></label>
+    <select class="size" id="pizza-size-hw">
+        <option value="small">Small - &euro;5</option>
+        <option value="medium">Medium - &euro;10</option>
+        <option value="large">Large - &euro;11</option>
+    </select>
+	</div>
+	</td>
+	
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct1" data-inline="true" data-mini="true">-</button>
+	<input type="text" data-inline="true" maxlength="3" size="3" id="hawaiianQty"/>
+	<button id="addProduct1" productname="hawaiian" data-inline="true" data-mini="true">+</button>
+    </div>
+	</td>
+	
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td><label for="check-option-0b">New Yorker Pizza</label>
+    <input type="checkbox" name="pizza" value = "NY" id="check-option-0b" class="custom">
+	</td>
+	<td>
+	<div class="pizza-size">
+	<label for="pizza-size-ny"></label>
+    <select class="size" id="pizza-size-ny">
+        <option value="small">Small - &euro;5</option>
+        <option value="medium">Medium - &euro;10</option>
+        <option value="large">Large - &euro;11</option>
+	</div>
+    </select>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct2">-</button>
+	<input type="text" id="nyQty"/>
+	<button id="addProduct2" productname="ny">+</button> 
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+		
+	<tr><td>
+	<label for="check-option-0c">House Special Pizza</label>
+    <input type="checkbox" name="pizza" value =" House" id="check-option-0c" class="custom">
+	</td>
+	<td>
+	<div class="pizza-size">
+	<label for="pizza-size-hs"></label>
+    <select class="size" id="pizza-size-hs">
+        <option value="small">Small - &euro;5</option>
+        <option value="medium">Medium - &euro;10</option>
+        <option value="large">Large - &euro;11</option>
+	</div>
+    </select>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct3">-</button>
+	<input type="text" id="houseQty"/>
+	<button id="addProduct3" productname="house">+</button>
+	</div>
+	</td>
+	<td>
+	</td>	
+	</tr>
+</table>
+	
+	<h2>Custom Pizza</h2>
+	<table>
+	<tr>
+      <th>Custom Pizza Select</th>
+      <th>Select Size</th>
+	  <th>Quantity</th>
+      <th>Add to Cart</th>
+    </tr>
+	<tr><td>	
+	<label>
+	<input type="checkbox" name="pizza" value ="Custom" id="check-option-cs">Custom Pizza
+	</label></td>
+	<td>
+	<div class="pizza-size">
+	<label for="pizza-size-cs"></label>
+    <select class="size" id="pizza-size-cs">
+        <option value="small">Small - &euro;5</option>
+        <option value="medium">Medium - &euro;10</option>
+        <option value="large">Large - &euro;11</option>
+	</div>
+	</select>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct4">-</button>
+	<input type="text" id="customQty"/>
+	<button id="addProduct4" productname="custom">+</button>
+	</div>
+	</td>
+	<td>
+	
+	</td>
+	</table>
+	<h2>Sides</h2>
+<table>
+	<tr>
+      <th>Select Side(s)</th>
+      <th>Quantity</th>
+      <th>Add to Cart</th>
+    </tr>
+	<tr><td>
+	<label>
+	<input type="checkbox" name="sides" value ="Wedges" id="check-option-1a">Potato Wedges - &euro;5
+	</label>
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct5">-</button>
+	<input type="text" id="wedgesQty"/>
+	<button id="addProduct5" productname="wedges">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<label for="check-option-1b">Garlic Bread - &euro;5</label>
+    <input type="checkbox" name="sides" value = "GBread" id="check-option-1b" class="custom">
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct6">-</button>
+	<input type="text" id="breadQty"/>
+	<button id="addProduct6" productname="bread">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+</table>	
+	<h2>Drinks</h2>
+<table>
+	<tr>
+      <th>Select Drink(s)</th>
+      <th>Quantity</th>
+      <th>Add to Cart</th>
+    </tr>
+	<tr><td>
+	<label>
+	<input type="checkbox" name="drink" value ="Coke" id="check-option-2a">Coca-Cola - &euro;1
+	</label>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct7">-</button>
+	<input type="text" id="cokeQty"/>
+	<button id="addProduct7" productname="coke">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr>
+	<td>	
+	<label for="check-option-2b">Fanta - &euro;1</label>
+    <input type="checkbox" name="drink" value = "Fanta" id="check-option-2b" class="custom">
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct8">-</button>
+	<input type="text" id="fantaQty"/>
+	<button id="addProduct8" productname="fanta">+</button>
+	</div>
+	</td>
+	<td>
+	</td>
+	</tr>
+	<tr><td>
+	<label for="check-option-2c">Sprite - &euro;1</label>
+    <input type="checkbox" name="drink" value = "Sprite" id="check-option-2c" class="custom">
+	</td>
+	<td>
+	<div class = "quantity">
+	<button id="removeProduct9">-</button>
+	<input type="text" id="spriteQty"/>
+	<button id="addProduct9" productname="sprite">+</button>
+	</div>
+	</td></tr>
+</table>	
 
     <label for="textarea-1">Special Requirements:</label>
     <textarea name="requirements" id="requirements"></textarea>
 
 
                     
-<button id="placeOrder"> Place Order</button>
+<button id="placeOrder">Place Order</button>
 
 
 <h2>Your Order Details</h2><br>
@@ -113,17 +314,27 @@ cola = new product("regular cola", 1.50, 0);
 
 </div>                 
 <script>
+$(document).ready(function(){
+  $("select.size").change(function(){
+        var selectedSize = $(this).children("option:selected").val();
+        alert("PizzaSize - " + selectedSize);
+		
+		});
+	});
+
 $( "#placeOrder" ).click(function() {
   var content = "";
   
   content = content + "Pizza Type: ";
   
+  
   var pizza = $("input[name=pizza]").each(function(){
 		if (this.checked == true){
-		content = content + this.value + ":" + this.checked + '<br>';
+		content = content + this.value + ":" + '<br>';
+		content = content + " - " + selectedSize;
 		}
   });
-    
+  
   var requirements = $("#requirements").val();
   
   content = content +'<br>Additional Order Requirements:</br>';  
@@ -132,13 +343,9 @@ $( "#placeOrder" ).click(function() {
   $("#orderDetails").html(content);
   
 });
-
 </script>
 		
-      
-		
-
-	</div><!-- /content -->
+    </div><!-- /content -->
 	<div data-role="footer" data-theme="a">
 		<h4>Stromboli Pizza &copy; 2019</h4><br>
 		<h4>Open 7 Days from 11am - 10pm</h4>
@@ -167,7 +374,7 @@ $( "#placeOrder" ).click(function() {
 	</div><!-- /footer -->
 </div>
 
-<!-------------------------- REGISTER PAGE ----------------------------------->
+<!-------------------------- REGISTER PAGE --------------------------------->
 
 <div data-role="page" id="register" data-theme="a">
 
@@ -176,12 +383,12 @@ $( "#placeOrder" ).click(function() {
 	</div><!-- /header -->
 
 <div role="main" class="ui-content">
-		<h2>Two</h2>
-        
+	<h2>Two</h2>
+    
        Username <input type="text" name="username" id="username" value="">
        Password <input type="text" name="password" id="password" value="">
 	   Account Type <input type="text" name="acctype" id="acctype" value="">
-<button class="ui-btn" id="registerButton">Submit</button>
+	<button class="ui-btn" id="registerButton">Submit</button>
 		
 
 	</div><!-- /content -->
@@ -210,9 +417,7 @@ $( "#loginButton" ).click(function() {
 	else if (data == 'driver'){
 		window.location = "/index#driver";
 		}
-	
 	});
-
 });
 	
 $( "#registerButton" ).click(function() {
@@ -232,6 +437,5 @@ $( "#registerButton" ).click(function() {
   //alert( "Register button pressed" );
   
 });
-
 </script>
 </html>
