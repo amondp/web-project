@@ -4,9 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Stromboli Pizza</title>
-
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	{% block stylesheets %}
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link href="{{ asset('../css/style.css') }}" rel="stylesheet">
+	{% endblock %}
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -84,7 +86,7 @@ wedges = new product("wedges");
 bread = new product ("bread");
 coke = new product ("coke");
 fanta = new product ("fanta");
-sprite = new product ("sprite);
+sprite = new product ("sprite");
 
 </script>
 <div data-role="header">
@@ -120,14 +122,14 @@ sprite = new product ("sprite);
 	
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct1" data-inline="true" data-mini="true">-</button>
-	<input type="text" data-inline="true" maxlength="3" size="3" id="hawaiianQty"/>
-	<button id="addProduct1" productname="hawaiian" data-inline="true" data-mini="true">+</button>
-    </div>
+	<input type="number" id="hawaiianQty" min="0" max="100" value = "0"/>
+	</div>
+	</div>
 	</td>
 	
 	<td>
-	</td>
+	<input type="button" id= "hawaiiAdd" data-icon="check" value="Add To Cart">
+    </td>
 	</tr>
 	<tr>
 	<td><label for="check-option-0b">New Yorker Pizza</label>
@@ -145,12 +147,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct2">-</button>
-	<input type="text" id="nyQty"/>
-	<button id="addProduct2" productname="ny">+</button> 
+	<input type="number" id="nyQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+	<input type="button" id= "nyAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</tr>
 		
@@ -170,12 +171,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct3">-</button>
-	<input type="text" id="houseQty"/>
-	<button id="addProduct3" productname="house">+</button>
+	<input type="number" id="houseQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+	<input type="button" id= "houseAdd" data-icon="check" value="Add To Cart">
 	</td>	
 	</tr>
 </table>
@@ -204,13 +204,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct4">-</button>
-	<input type="text" id="customQty"/>
-	<button id="addProduct4" productname="custom">+</button>
+	<input type="number" id="customQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
-	
+	<input type="button" id= "customAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</table>
 	<h2>Sides</h2>
@@ -227,12 +225,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct5">-</button>
-	<input type="text" id="wedgesQty"/>
-	<button id="addProduct5" productname="wedges">+</button>
+	<input type="number" id="wedgesQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+	<input type="button" id= "wedgesAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</tr>
 	<tr>
@@ -242,12 +239,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct6">-</button>
-	<input type="text" id="breadQty"/>
-	<button id="addProduct6" productname="bread">+</button>
+	<input type="number" id="breadQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+	<input type="button" id= "breadAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</tr>
 </table>	
@@ -264,12 +260,11 @@ sprite = new product ("sprite);
 	</label>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct7">-</button>
-	<input type="text" id="cokeQty"/>
-	<button id="addProduct7" productname="coke">+</button>
+	<input type="number" id="cokeQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+	<input type="button" id= "cokeAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</tr>
 	<tr>
@@ -279,12 +274,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct8">-</button>
-	<input type="text" id="fantaQty"/>
-	<button id="addProduct8" productname="fanta">+</button>
+	<input type="number" id="fantaQty" min="0" max="100" value = "0"/>
 	</div>
 	</td>
 	<td>
+ 	<input type="button" id= "fantaAdd" data-icon="check" value="Add To Cart">
 	</td>
 	</tr>
 	<tr><td>
@@ -293,10 +287,11 @@ sprite = new product ("sprite);
 	</td>
 	<td>
 	<div class = "quantity">
-	<button id="removeProduct9">-</button>
-	<input type="text" id="spriteQty"/>
-	<button id="addProduct9" productname="sprite">+</button>
+	<input type="number" id="spriteQty" min="0" max="100" value = "0"/>
 	</div>
+	</td>
+	<td>
+	<input type="button" id= "spriteAdd" data-icon="check" value="Add To Cart">
 	</td></tr>
 </table>	
 
@@ -331,7 +326,6 @@ $( "#placeOrder" ).click(function() {
   var pizza = $("input[name=pizza]").each(function(){
 		if (this.checked == true){
 		content = content + this.value + ":" + '<br>';
-		content = content + " - " + selectedSize;
 		}
   });
   
