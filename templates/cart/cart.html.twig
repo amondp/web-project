@@ -126,6 +126,29 @@ $('[id^=addProduct').click(function(){
 $('[id^=removeProduct').click(function(){
 
    var p = $(this).attr('productname');
+   
+   var arrayLength = prod.length;
+    for (var i = 0; i < arrayLength; i++) { // loop over the products
+        
+        var pro = prod[i] // get one product at a time
+        console.log(pro.name);
+        
+        if(p == pro.name) { // check if the product we are looking for is the one we have.
+        
+            console.log(pro.qty);
+            
+            pro.qty = pro.qty - 1; // remove one from the qty
+            
+              $( "#"+pro.name+"Qty" ).val(pro.qty); // if we looking for cookies, pro.name+Qty becomes, cookiesQty
+
+        }
+        //Do something
+        
+        
+        
+        
+    }
+   
 });
 
 
