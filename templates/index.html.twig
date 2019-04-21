@@ -7,16 +7,15 @@
 	{% block stylesheets %}
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link href="{{ asset('../css/style.css') }}" rel="stylesheet">
-	{% endblock %}
+   	{% endblock %}
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
 
-<!-- Start of first page: #one -->
-<div data-role="page" id="one">
+<!-- Start of first page: #landing -->
+<div data-role="page" id="landing">
 
 	<div data-role="header">
 		<h1>Stromboli Pizza</h1>
@@ -37,7 +36,28 @@
 		<h4>Stromboli Pizza &copy; 2019</h4><br>
 		<h4>Open 7 Days from 11am - 10pm</h4>
 	</div><!-- /footer -->
-</div><!-- /page one -->
+</div><!-- /page landing -->
+
+<!-------------------- Manager DASHBOARD ----------------------->
+
+<div data-role="page" id="manager" data-theme="a">
+
+	<div data-role="header">
+		<h1>Manager</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Manager</h2>
+   
+    
+	</div>
+	<!-- /content -->
+	
+	<div data-role="footer" data-theme="a">
+		<h4>Stromboli Pizza &copy; 2019</h4><br>
+		<h4>Open 7 Days from 11am - 10pm</h4>
+	</div><!-- /footer -->
+</div>
 
 <!-------------------- DRIVER DASHBOARD ----------------------->
 
@@ -95,7 +115,6 @@ sprite = new product ("sprite");
 
 <div role="main" class="ui-content">
 		<h2>Set Menu</h2>
-
 <table>
 	<tr>
       <th>Select Pizza(s)</th>
@@ -113,7 +132,8 @@ sprite = new product ("sprite");
 	<div class="pizza-size">
     <label for="pizza-size-hw"></label>
     <select class="size" id="pizza-size-hw">
-        <option value="small">Small - &euro;5</option>
+        <option value="" selected disabled hidden>Choose here</option>
+		<option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
     </select>
@@ -128,8 +148,10 @@ sprite = new product ("sprite");
 	</td>
 	
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "hawaiiAdd" data-icon="check" value="Add To Cart">
-    </td>
+	</div>
+	</td>
 	</tr>
 	<tr>
 	<td><label for="check-option-0b">New Yorker Pizza</label>
@@ -139,7 +161,8 @@ sprite = new product ("sprite");
 	<div class="pizza-size">
 	<label for="pizza-size-ny"></label>
     <select class="size" id="pizza-size-ny">
-        <option value="small">Small - &euro;5</option>
+        <option value="" selected disabled hidden>Choose here</option>
+		<option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
 	</div>
@@ -151,7 +174,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "nyAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>
 	</tr>
 		
@@ -163,7 +188,8 @@ sprite = new product ("sprite");
 	<div class="pizza-size">
 	<label for="pizza-size-hs"></label>
     <select class="size" id="pizza-size-hs">
-        <option value="small">Small - &euro;5</option>
+        <option value="" selected disabled hidden>Choose here</option>
+		<option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
 	</div>
@@ -175,7 +201,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "houseAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>	
 	</tr>
 </table>
@@ -196,7 +224,8 @@ sprite = new product ("sprite");
 	<div class="pizza-size">
 	<label for="pizza-size-cs"></label>
     <select class="size" id="pizza-size-cs">
-        <option value="small">Small - &euro;5</option>
+        <option value="" selected disabled hidden>Choose here</option>
+		<option value="small">Small - &euro;5</option>
         <option value="medium">Medium - &euro;10</option>
         <option value="large">Large - &euro;11</option>
 	</div>
@@ -208,7 +237,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "customAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>
 	</table>
 	<h2>Sides</h2>
@@ -229,7 +260,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "wedgesAdd" data-icon="check" value="Add To Cart">
+	<div class = "cartConfirm">
 	</td>
 	</tr>
 	<tr>
@@ -243,7 +276,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "breadAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>
 	</tr>
 </table>	
@@ -264,7 +299,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "cokeAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>
 	</tr>
 	<tr>
@@ -278,7 +315,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
  	<input type="button" id= "fantaAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td>
 	</tr>
 	<tr><td>
@@ -291,7 +330,9 @@ sprite = new product ("sprite");
 	</div>
 	</td>
 	<td>
+	<div class = "cartConfirm">
 	<input type="button" id= "spriteAdd" data-icon="check" value="Add To Cart">
+	</div>
 	</td></tr>
 </table>	
 
@@ -300,8 +341,7 @@ sprite = new product ("sprite");
 
 
                     
-<button id="placeOrder">Place Order</button>
-
+<button id="placeOrder">View Cart & Confirm Order</button>
 
 <h2>Your Order Details</h2><br>
 <div id="orderDetails">
@@ -312,7 +352,7 @@ sprite = new product ("sprite");
 $(document).ready(function(){
   $("select.size").change(function(){
         var selectedSize = $(this).children("option:selected").val();
-        alert("PizzaSize - " + selectedSize);
+        console.log(selectedSize);
 		
 		});
 	});
@@ -377,11 +417,15 @@ $( "#placeOrder" ).click(function() {
 	</div><!-- /header -->
 
 <div role="main" class="ui-content">
-	<h2>Two</h2>
+	<h2>Account Registration</h2>
     
        Username <input type="text" name="username" id="username" value="">
        Password <input type="text" name="password" id="password" value="">
-	   Account Type <input type="text" name="acctype" id="acctype" value="">
+	   Account Type <select name="acctype" id="acctype">
+        <option value="customer">Customer</option>
+        <option value="driver">Driver</option>
+        <option value="manager">Manager</option>
+    </select>
 	<button class="ui-btn" id="registerButton">Submit</button>
 		
 
@@ -411,6 +455,9 @@ $( "#loginButton" ).click(function() {
 	else if (data == 'driver'){
 		window.location = "/index#driver";
 		}
+	else {
+		window.location = "index#manager";
+		}
 	});
 });
 	
@@ -422,11 +469,21 @@ $( "#registerButton" ).click(function() {
   console.log(pw);
   
   var at = $( "#acctype" ).val();
-  console.log(acctype);
+  console.log(at);
 
   $.post( "/backEnd", { type: "register", username:un, password:pw, acctype:at})
   .done(function( data ) {
     alert( "Data Loaded: " + data );
+  
+  if(data == 'customer'){
+		window.location = "/index#customer";
+		}
+	else if (data == 'driver'){
+		window.location = "/index#driver";
+		}
+	else {
+		window.location = "index#manager";
+		}
   });
   //alert( "Register button pressed" );
   
