@@ -7,13 +7,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Login;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 class BackEnd extends AbstractController
 {
+	private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+	
     /**
      * @Route("/backEnd", name="catch") methods={"GET","POST"}
      */
-    public function index()
+    public function index(SessionInterface $session)
     {
 		$request = Request::createFromGlobals(); // the envelope, and were looking inside it.
 
@@ -56,6 +65,13 @@ class BackEnd extends AbstractController
 				'username'=>$username,
 				'password'=>$password,
 				]);
+				
+				// save the user ID to the session
+                // KEY-VALUE
+                
+                // KEY - IS the name we give it
+                // $variable - is what we want to save.
+                $session->set('username', $username);
 				
 				return new Response(
 				$person->getAcctype()//sends back account type

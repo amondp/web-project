@@ -7,6 +7,7 @@
 	{% block stylesheets %}
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="/themes/Stromboli.css"/>
    	{% endblock %}
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -98,16 +99,18 @@ class product {
 
 // define our products
 //pizza = new product("...") or a separate variable for each project
-hawaiian = new product("hawaiian", 3.50, 0);
-ny = new product("ny", 1.50, 0);
-house = new product("house",);
-custom = new product("custom");
-wedges = new product("wedges");
-bread = new product ("bread");
-coke = new product ("coke");
-fanta = new product ("fanta");
-sprite = new product ("sprite");
+hawaiian = new product("hawaiian", "", 0, 0);
+ny = new product("ny", "", 0, 0);
+house = new product("house", "", 0, 0);
+custom = new product("custom", "", 0, 0);
+wedges = new product("wedges", "", 5, 0);
+bread = new product ("bread", "", 5, 0);
+coke = new product ("coke", "", 1, 0);
+fanta = new product ("fanta", "", 1, 0);
+sprite = new product ("sprite", "", 1, 0);
 
+
+var prod = []; //array of products
 </script>
 <div data-role="header">
 		<h1>Customer</h1>
@@ -152,6 +155,26 @@ sprite = new product ("sprite");
 	<input type="button" id= "hawaiiAdd" data-icon="check" value="Add To Cart">
 	</div>
 	</td>
+<script>
+	$('[id = hawaiiAdd').click(function(){
+	if (($("#check-option-0a").checked = true) && ($("#hawaiianQty").val() > 0)){
+	console.log("conditionGood");
+	hawaiian.size = $("#pizza-size-hw").val();
+	hawaiian.qty = $("#hawaiianQty").val();
+	if (hawaiian.size == "small"){
+		hawaiian.price = 5 * hawaiian.qty;
+		}
+	else if (hawaiian.size == "medium"){
+		hawaiian.price = 10 * hawaiian.qty;
+		}
+	else {
+		hawaiian.price = 11 * hawaiian.qty;
+	}
+	console.log (hawaiian.price);
+	prod.push (hawaiian);
+	}
+});
+</script>
 	</tr>
 	<tr>
 	<td><label for="check-option-0b">New Yorker Pizza</label>
@@ -178,6 +201,26 @@ sprite = new product ("sprite");
 	<input type="button" id= "nyAdd" data-icon="check" value="Add To Cart">
 	</div>
 	</td>
+<script>
+	$('[id = nyAdd').click(function(){
+	if (($("#check-option-0b").checked = true) && ($("#nyQty").val() > 0)){
+	console.log("conditionGood");
+	ny.size = $("#pizza-size-ny").val();
+	ny.qty = $("#nyQty").val();
+	if (ny.size == "small"){
+		ny.price = 5 * ny.qty;
+		}
+	else if (ny.size == "medium"){
+		ny.price = 10 * ny.qty;
+		}
+	else {
+		ny.price = 11 * ny.qty;
+	}
+	console.log (ny.price);
+	prod.push (ny);
+	}
+});
+</script>	
 	</tr>
 		
 	<tr><td>
@@ -204,6 +247,27 @@ sprite = new product ("sprite");
 	<div class = "cartConfirm">
 	<input type="button" id= "houseAdd" data-icon="check" value="Add To Cart">
 	</div>
+	</td>
+<script>
+	$('[id = houseAdd').click(function(){
+	if (($("#check-option-0c").checked = true) && ($("#houseQty").val() > 0)){
+	console.log("conditionGood");
+	house.size = $("#pizza-size-hs").val();
+	house.qty = $("#houseQty").val();
+	if (house.size == "small"){
+		house.price = 5 * house.qty;
+		}
+	else if (house.size == "medium"){
+		house.price = 10 * house.qty;
+		}
+	else {
+		house.price = 11 * house.qty;
+	}
+	console.log (house.price);
+	prod.push (house);
+	}
+});
+</script>		
 	</td>	
 	</tr>
 </table>
@@ -241,6 +305,26 @@ sprite = new product ("sprite");
 	<input type="button" id= "customAdd" data-icon="check" value="Add To Cart">
 	</div>
 	</td>
+<script>
+	$('[id = customAdd').click(function(){
+	if (($("#check-option-0d").checked = true) && ($("#customQty").val() > 0)){
+	console.log("conditionGood");
+	custom.size = $("#pizza-size-cs").val();
+	custom.qty = $("#customQty").val();
+	if (custom.size == "small"){
+		custom.price = 5 * custom.qty;
+		}
+	else if (custom.size == "medium"){
+		custom.price = 10 * custom.qty;
+		}
+	else {
+		custom.price = 11 * custom.qty;
+	}
+	console.log (custom.price);
+	prod.push (custom);
+	}
+});
+</script>
 	</table>
 	<h2>Sides</h2>
 <table>
@@ -264,6 +348,18 @@ sprite = new product ("sprite");
 	<input type="button" id= "wedgesAdd" data-icon="check" value="Add To Cart">
 	<div class = "cartConfirm">
 	</td>
+<script>
+	$('[id = wedgesAdd').click(function(){
+	if (($("#check-option-1a").checked = true) && ($("#wedgesQty").val() > 0)){
+	console.log("conditionGood");
+	wedges.qty = $("#wedgesQty").val();
+	wedges.price = 5 * wedges.qty;
+	
+	console.log (wedges.price);
+	prod.push (wedges);
+	}
+});
+</script>
 	</tr>
 	<tr>
 	<td>
@@ -280,6 +376,18 @@ sprite = new product ("sprite");
 	<input type="button" id= "breadAdd" data-icon="check" value="Add To Cart">
 	</div>
 	</td>
+<script>
+	$('[id = breadAdd').click(function(){
+	if (($("#check-option-1b").checked = true) && ($("#breadQty").val() > 0)){
+	console.log("conditionGood");
+	bread.qty = $("#breadQty").val();
+	bread.price = 5 * bread.qty;
+	
+	console.log (bread.price);
+	prod.push (bread);
+	}
+});
+</script>
 	</tr>
 </table>	
 	<h2>Drinks</h2>
@@ -302,6 +410,18 @@ sprite = new product ("sprite");
 	<div class = "cartConfirm">
 	<input type="button" id= "cokeAdd" data-icon="check" value="Add To Cart">
 	</div>
+<script>
+	$('[id = cokeAdd').click(function(){
+	if (($("#check-option-2a").checked = true) && ($("#cokeQty").val() > 0)){
+	console.log("conditionGood");
+	coke.qty = $("#cokeQty").val();
+	coke.price = 1 * coke.qty;
+	
+	console.log (coke.price);
+	prod.push (coke);
+	}
+});
+</script>
 	</td>
 	</tr>
 	<tr>
@@ -319,6 +439,18 @@ sprite = new product ("sprite");
  	<input type="button" id= "fantaAdd" data-icon="check" value="Add To Cart">
 	</div>
 	</td>
+<script>
+	$('[id = fantaAdd').click(function(){
+	if (($("#check-option-2b").checked = true) && ($("#fantaQty").val() > 0)){
+	console.log("conditionGood");
+	fanta.qty = $("#fantaQty").val();
+	fanta.price = 1 * fanta.qty;
+	
+	console.log (fanta.price);
+	prod.push (fanta);
+	}
+});
+</script>
 	</tr>
 	<tr><td>
 	<label for="check-option-2c">Sprite - &euro;1</label>
@@ -333,50 +465,97 @@ sprite = new product ("sprite");
 	<div class = "cartConfirm">
 	<input type="button" id= "spriteAdd" data-icon="check" value="Add To Cart">
 	</div>
+	</td>
+<script>
+	$('[id = spriteAdd').click(function(){
+	if (($("#check-option-2c").checked = true) && ($("#spriteQty").val() > 0)){
+	console.log("conditionGood");
+	sprite.qty = $("#spriteQty").val();
+	sprite.price = 1 * sprite.qty;
+	
+	console.log (sprite.price);
+	prod.push (sprite);
+	}
+});
+</script>	
+	</tr>
 	</td></tr>
 </table>	
 
-    <label for="textarea-1">Special Requirements:</label>
+    <label for="textarea-1"><h3>Special Requirements:</h3></label>
     <textarea name="requirements" id="requirements"></textarea>
-
+	
+	<label for="textarea-1"><h3>Delivery Address:</h3></label>
+    <textarea name="address" id="address"></textarea>
 
                     
-<button id="placeOrder">View Cart & Confirm Order</button>
+<button id="viewOrder">View Cart & Order Details</button>
 
-<h2>Your Order Details</h2><br>
+<h2>Your Order </h2><br>
 <div id="orderDetails">
 
 
 </div>                 
 <script>
-$(document).ready(function(){
-  $("select.size").change(function(){
-        var selectedSize = $(this).children("option:selected").val();
-        console.log(selectedSize);
-		
-		});
-	});
+$( "#viewOrder" ).click(function() {
+  var content = "<table data-role='table' id='movie-table' data-mode='reflow' class='ui-responsive'>";
+  var total = 0; 
+  for (i = 0; i < prod.length; i++){
+    
+	total = total + prod[i].price;
+	console.log (total);
+    content+="<th>Product</th><th>Size</th><th>Qty</th><th>Subtotal</th>";
+	content+="<tr>";
+        content+="<td>"+prod[i].name+"</td>";
+        content+="<td>"+prod[i].size+"</td>";
+        content+="<td>"+prod[i].qty+"</td>";
+		content+="<td>€"+prod[i].price+"</td>";
+        content+="</tr>";
+	console.log (prod[i]);
+    }
+    content+="</table>";
+	content+= "<br><strong>Total Order Cost: €" + total + "</strong><br>";
 
-$( "#placeOrder" ).click(function() {
-  var content = "";
-  
-  content = content + "Pizza Type: ";
-  
-  
-  var pizza = $("input[name=pizza]").each(function(){
-		if (this.checked == true){
-		content = content + this.value + ":" + '<br>';
-		}
-  });
-  
   var requirements = $("#requirements").val();
+  var address = $("#address").val();
   
-  content = content +'<br>Additional Order Requirements:</br>';  
-  content = content + requirements + '<br>';
-  
+	content+= "<br><strong>Special Requirements: </strong><br>" + requirements;
+	content+= "<br><strong>Delivery Address: </strong><br>" + address;
   $("#orderDetails").html(content);
-  
 });
+</script>
+
+<button id="checkitout">Checkout</button>
+
+<script>
+
+$("#checkitout").click(function(){
+
+   var ser = '';
+   var name = '@Session["username"]';
+	
+     var arrayLength = prod.length;
+     
+        for (var i = 0; i < arrayLength; i++) { // loop over the products
+            
+            var pro = prod[i] // get one product at a time
+            console.log(pro.name);
+            console.log(pro.qty);
+			console.log(pro.price);
+            
+            ser = ser + pro.name + '-' + pro.qty + '-' + pro.price + '=';
+        }
+    // jQuery post and send the ser.
+	var data = "";
+    $.post( "/cartController", { placedby: name, orderdetails: ser, deliveryaddress: $("#address").val() })
+      .done(function( data ) {
+        alert( "Data Loaded: " + data );
+      });
+
+
+console.log(ser);
+});
+
 </script>
 		
     </div><!-- /content -->
