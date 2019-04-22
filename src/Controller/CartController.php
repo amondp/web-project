@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Login;
+use App\Entity\Orders;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -32,9 +32,9 @@ class CartController extends AbstractController
         $address = $request->request->get('deliveryaddress', 'this is the default');
       
       // Break apart the serialized order
-      // $data = explode('=', 'cookies-2=pizza-2='); <--- this is what order details look like
+		$data = explode("=", $orderdetails); //<--- this is what order details look like
         foreach($data as $record) {    
-            $item = explode('-',$record);
+            $item = array_pad(explode('-',$record),3, null);
             echo 'Item: ' . $item[0] . '<br>';
             echo 'Qty: ' . $item[1] . '<br>';
 			echo 'Subtotal: ' . $item[2] . '<br>';
@@ -45,11 +45,11 @@ class CartController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         // create blank entity of type "Orders"
-        $order = new orders();
+        $order = new Orders();
         
-        $order->setPlacedBy($placedby);
-        $order->setDetails(substr($ser, 0, -1));
-
+        $order->setPlacedby($placedby);
+        $order->setOrderdetails(substr($orderdetails, 0, -1));
+		$order->setDeliveryaddress($address);
 
       
         $entityManager->persist($order);
@@ -58,7 +58,7 @@ class CartController extends AbstractController
         $entityManager->flush();
        
         return new Response(
-            'all ok' . $ser
+            'all ok' . $orderdetails
         );
     }
 }
