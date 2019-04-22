@@ -30,7 +30,9 @@ class Orders
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $deliveryaddress;
-
+	/**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     public function getId(): ?int
     {
         return $this->id;

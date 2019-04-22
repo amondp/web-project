@@ -49,10 +49,28 @@
 
 	<div role="main" class="ui-content">
 		<h2>Manager</h2>
-   
-    
-	</div>
+   <button id="viewOrders">View Orders</button>
+
+<script>
+
+$("#viewOrders").click(function(){
+
+  var name = sessionStorage.getItem("uname");
+
+  var data = "";
+    $.get( "/viewAll", function( data ) {
+		$( "#output" ).html( data );
+        alert( "Data Loaded: " + data );
+      });
+
+});
+
+</script>
+    </div>
 	<!-- /content -->
+	<div id="output">
+		
+	</div>
 	
 	<div data-role="footer" data-theme="a">
 		<h4>Stromboli Pizza &copy; 2019</h4><br>
@@ -70,7 +88,50 @@
 
 	<div role="main" class="ui-content">
 		<h2>Driver</h2>
-   
+    <button id="viewOrders">View Orders</button>
+
+<script>
+
+$("#viewOrders").click(function(){
+
+  var name = sessionStorage.getItem("uname");
+
+  var data = "";
+    $.get( "/viewAll", function( data ) {
+		$( "#output" ).html( data );
+        alert( "Data Loaded: " + data );
+      });
+
+});
+
+</script>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
+  <div id="output">
+  
+  </div>
+  
+  <!--- <script>
+//The getJSON function allows us to make a call outside of our server out to somewhere else, such as an API
+
+ $.getJSON( "http://api.apixu.com/v1/forecast.json?key=1ebeebb573f84a8bbcd215442192204&q=Dublin", 
+  function( data ) {
+     // just to see what the response looks like, we will do a console.log which will dump the entire API response to the console.
+     console.log(data);
+
+     // By looking at the structure of the console.log, we can see that in the "data" object that is returned, there are
+     // individual "articles". So we will use a loop to go through these articles.
+      for(var i=0;i<data.articles.length; i++)
+      {
+        
+        // For each individual news story that we have, we will take one article title at a time
+        // and then append it into the #output div tag at the top of the page.
+        var singleTitle = data.articles[i].title
+        $('#output').append(singleTitle + '<br>')
+        
+      }  
+     
+  });
+  </script> --->
     
 	</div>
 	<!-- /content -->
@@ -529,9 +590,10 @@ $( "#viewOrder" ).click(function() {
 $("#checkitout").click(function(){
 
    var ser = '';
-   var name = '@Session["username"]';
-	
-     var arrayLength = prod.length;
+   var name = sessionStorage.getItem("uname");
+   var address = $("#address").val();
+   
+   var arrayLength = prod.length;
      
         for (var i = 0; i < arrayLength; i++) { // loop over the products
             
@@ -542,9 +604,9 @@ $("#checkitout").click(function(){
             
             ser = ser + pro.name + '-' + pro.qty + '-' + pro.price + '=';
         }
-    // jQuery post and send the ser.
+    // jQuery post and send
 	var data = "";
-    $.post( "/cartController", { placedby: name, orderdetails: ser, deliveryaddress: $("#address").val() })
+    $.post( "/cartController", { placedby: name, orderdetails: ser, deliveryaddress: address })
       .done(function( data ) {
         alert( "Data Loaded: " + data );
       });
@@ -617,6 +679,7 @@ console.log(ser);
 $( "#loginButton" ).click(function() {
   var un = $( "#login_username" ).val();
   console.log(un);
+  sessionStorage.setItem ("uname", un); //temporary session storage using un variable, called in cart push to db
   
   var pw = $( "#login_password" ).val();
   console.log(pw);
@@ -650,17 +713,8 @@ $( "#registerButton" ).click(function() {
   $.post( "/backEnd", { type: "register", username:un, password:pw, acctype:at})
   .done(function( data ) {
     alert( "Data Loaded: " + data );
-  
-  if(data == 'customer'){
-		window.location = "/index#customer";
-		}
-	else if (data == 'driver'){
-		window.location = "/index#driver";
-		}
-	else {
-		window.location = "index#manager";
-		}
-  });
+   	window.location = "index#login";
+	});
   //alert( "Register button pressed" );
   
 });
